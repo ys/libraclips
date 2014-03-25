@@ -1,28 +1,15 @@
 require 'dotenv'
 Dotenv.load
 require 'sequel'
-require 'pp'
 require_relative './dataclips'
-require_relative './transformer'
-require_relative './librato'
+require_relative './poller'
 
 class Dataclips2Librato
   MEASURE_INTERVAL = 10
 
   def self.run
-    @db = Sequel.connect(ENV['DATABASE_URL'])
-    loop do
-      @db[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_every_seconds))").each do |row|
-        pp row
-        self.new.(row[:dataclip_reference], row[:librato_base_name])
-      end
-      sleep MEASURE_INTERVAL
-    end
-  end
-
-  def call(dataclip_ref, librato_base_name)
-    transformer = Transformer.new(dataclip_ref, librato_base_name)
-    metrics = transformer.call
-    Librato::Client.new.submit(metrics)
+    database_url = ENV['DATABASE_URL'] || 'postgres://localhost:5432/dataclips2librato'
+    poll_interval = Integer(ENV['POLL_INTERVAL'] || 10)
+    Poller.new(database_url: database_url, poll_interval: poll_interval).run
   end
 end
