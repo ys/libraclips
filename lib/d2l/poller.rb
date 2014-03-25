@@ -3,18 +3,17 @@ require_relative 'librato'
 
 module D2L
   class Poller
-    attr_reader :database_url, :poll_interval
+    attr_reader :poll_interval
 
     def initialize(options = {})
-      @database_url = options[:database_url]
       @poll_interval = options[:poll_interval]
     end
 
     def run
       loop do
-        db[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_every_seconds))").each do |row|
+        DB[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_every_seconds))").each do |row|
           self.call(row[:dataclip_reference], row[:librato_base_name])
-          db[:measurements].where(id: row[:id]).update(run_at: Time.now())
+          DB[:measurements].where(id: row[:id]).update(run_at: Time.now())
         end
         sleep poll_interval
       end
@@ -26,8 +25,5 @@ module D2L
       Librato::Client.new.submit(metrics)
     end
 
-    def db
-      @db ||= Sequel.connect(database_url)
-    end
   end
 end
