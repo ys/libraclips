@@ -35,6 +35,25 @@ This class just needs to implements two methods
 * `#accepts?(dataclip)` This method permits to find a transform function for current dataclip
 * `#call(dataclip, options)` This is the actual transformation method. It should returns the metrics ready for Librato.
 
+#### Class skeleton
+
+
+```
+module D2L
+  module TransformFunctions
+    class MyTransform
+      def accepts?(dataclip)
+        true
+      end
+      
+      def call(dataclip, options= {})
+        # do amazing stuff with the dataclip      
+      end
+    end
+  end
+end
+```
+
 ## TODO
 
 * Write tests
