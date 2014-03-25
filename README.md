@@ -23,5 +23,22 @@ $ foreman start
 * `DATABASE_URL`: Auto provisioned on Heroku. Local default to `postgres://localhost:5432/dataclips2librato`
 * `POLL_INTERVAL`: Minimum Time Between two migrations of the measurements.
 
+## How to extend the possible transformations
+
+Adding a new class under D2L::TransformFunctions.
+This class just needs to implements two methods
+
+* `#accepts?(dataclip)` This method permits to find a transform function for current dataclip
+* `#call(dataclip, options)` This is the actual transformation method. It should returns the metrics ready for Librato.
+
+## TODO
+
+* Write tests
+* Analyse needs to write new and accurate transform functions.
+* Add Logging and better error handling
+* Add Dependency Injection to be able to be compliant with other services than Librato
+
+
+
 
 
