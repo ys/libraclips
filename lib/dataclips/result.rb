@@ -27,5 +27,21 @@ module Dataclips
       raise(StandardError, "'#{name}' is missing") unless field
       raise(StandardError, "'#{name}' is not an array") unless field.is_a? Array
     end
+
+    def empty?
+      values.size == 0
+    end
+
+    def matching_fields(regexp)
+      fields.select { |f| f =~ name }
+    end
+
+    def has_field?(name)
+      if name.is_a? Regexp
+        fields.any? { |f| f =~ name }
+      else
+        fields.include? name.to_s
+      end
+    end
   end
 end
