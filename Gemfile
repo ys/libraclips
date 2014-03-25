@@ -12,6 +12,7 @@ gem "sequel"
 
 group :development do
   gem "debugger"
+  gem "foreman"
 end
 
 group :test do
