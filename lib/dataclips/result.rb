@@ -1,4 +1,3 @@
-require 'pp'
 module Dataclips
   class Result < Struct.new(:fields, :values)
     def self.from(json_response)
