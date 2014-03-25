@@ -1,4 +1,5 @@
 require_relative 'result'
+require_relative 'id_extractor'
 require 'open-uri'
 require 'json'
 
@@ -39,7 +40,7 @@ module D2L
       # if just the id returns the id
       #
       def extract_dataclip_id(url)
-        url.split("/").last.gsub(/\#.+/, '').gsub(/\.\w+/, '')
+        IdExtractor.new(url).call
       end
 
       def dataclips_url
