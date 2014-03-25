@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'debugger'
-require_relative '../lib/dataclips2librato'
+require_relative '../lib/d2l'
 require 'vcr'
 
 VCR.configure do |c|

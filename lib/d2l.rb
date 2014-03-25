@@ -1,12 +1,11 @@
 require 'dotenv'
 Dotenv.load
 require 'sequel'
-require_relative './dataclips'
-require_relative './poller'
+require_relative './d2l/dataclips'
+require_relative './d2l/librato'
+require_relative './d2l/poller'
 
-class Dataclips2Librato
-  MEASURE_INTERVAL = 10
-
+module D2L
   def self.run
     database_url = ENV['DATABASE_URL'] || 'postgres://localhost:5432/dataclips2librato'
     poll_interval = Integer(ENV['POLL_INTERVAL'] || 10)

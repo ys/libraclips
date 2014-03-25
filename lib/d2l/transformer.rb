@@ -1,7 +1,7 @@
 require 'scrolls'
 require_relative 'dataclips'
 require_relative 'transform_functions'
-
+module D2L
 class Transformer
   def initialize(dataclip_ref, librato_base_name = nil)
     @dataclip_ref = dataclip_ref
@@ -24,4 +24,5 @@ class Transformer
   def dataclips_client
     @dataclips_client ||= Dataclips::Client.new
   end
+end
 end
