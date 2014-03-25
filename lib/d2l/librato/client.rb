@@ -1,3 +1,4 @@
+require_relative '../config'
 require 'faraday'
 
 module D2L
@@ -16,7 +17,7 @@ module D2L
 
       def client
         conn = Faraday.new(:url => LIBRATO_URL).tap do |conn|
-          conn.basic_auth(librato_email, librato_token)
+          conn.basic_auth(Config.librato_email, Config.librato_token)
         end
       end
 
