@@ -1,6 +1,6 @@
+require_relative 'result'
 require 'open-uri'
 require 'json'
-require_relative 'result'
 
 module D2L
   module Dataclips
@@ -16,7 +16,6 @@ module D2L
         Dataclips::Result.new([], [])
       end
 
-
       private
 
       def get(id)
@@ -27,9 +26,13 @@ module D2L
 
       # Use open-uri for the moment as there is no special requirement here.
       def http_get(id)
-        open("https://dataclips.heroku.com/#{id}.json") do |f|
+        open(dataclip_url(id)) do |f|
           f.read
         end
+      end
+
+      def dataclip_url(id)
+        "#{dataclips_url}#{id}#{dataclips_suffix}"
       end
 
       # Extract the id from the url
@@ -37,6 +40,14 @@ module D2L
       #
       def extract_dataclip_id(url)
         url.split("/").last.gsub(/\#.+/, '').gsub(/\.\w+/, '')
+      end
+
+      def dataclips_url
+        'https://dataclips.heroku.com/'.freeze
+      end
+
+      def dataclips_suffix
+        '.json'.freeze
       end
     end
   end

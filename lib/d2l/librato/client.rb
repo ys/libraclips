@@ -4,29 +4,27 @@ require 'faraday'
 module D2L
   module Librato
     class Client
-      LIBRATO_URL = 'https://metrics-api.librato.com'
-      METRICS_PATH = '/v1/metrics'
 
       def submit(metrics = { gauges: [] })
         client.post do |req|
-          req.url METRICS_PATH
+          req.url librato_metrics_path
           req.headers['Content-Type'] = 'application/json'
           req.body =  metrics.to_json
         end
       end
 
       def client
-        conn = Faraday.new(:url => LIBRATO_URL).tap do |conn|
+        conn = Faraday.new(:url => librato_url).tap do |conn|
           conn.basic_auth(Config.librato_email, Config.librato_token)
         end
       end
 
-      def librato_email
-        ENV['LIBRATO_EMAIL']
+      def librato_url
+        'https://metrics-api.librato.com'.freeze
       end
 
-      def librato_token
-        ENV['LIBRATO_TOKEN']
+      def librato_metrics_path
+        '/v1/metrics'.freeze
       end
     end
   end
