@@ -6,10 +6,13 @@ module D2L
     class Client
 
       def submit(metrics = { gauges: [] })
-        client.post do |req|
+        response = client.post do |req|
           req.url librato_metrics_path
           req.headers['Content-Type'] = 'application/json'
           req.body =  metrics.to_json
+        end
+        if response.status > 399
+          Scrolls.log(body:response.body, status: response.status)
         end
       end
 
