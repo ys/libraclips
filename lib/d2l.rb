@@ -1,5 +1,3 @@
-require 'dotenv'
-Dotenv.load
 require 'sequel'
 require_relative './d2l/dataclips'
 require_relative './d2l/librato'
