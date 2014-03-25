@@ -1,4 +1,8 @@
-# Heroku Dataclips 2 Librato Tracker
+# Libraclips
+
+## Heroku Dataclips 2 Librato Tracker
+
+![](https://dl.dropboxusercontent.com/s/19mxjz04a96z4tw/libraclips.png?token_hash=AAFGAxyAaL9DKbnVFWTNwO4fKhqpZsb7E6uVK8okPqlPQg)
 
 This project aims to allow you to follow dataclips to be tracked on Librato.  
 You can specify the base librato namespace of the metric and also the interval in which it has to be measured.
@@ -37,6 +41,7 @@ This class just needs to implements two methods
 * Analyse needs to write new and accurate transform functions.
 * Add Logging and better error handling
 * Add Dependency Injection to be able to be compliant with other services than Librato
+* Rename project to libraclips
 
 
 
