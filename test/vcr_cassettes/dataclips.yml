@@ -1,0 +1,407 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dataclips.heroku.com/jcopmmuubebhyotlbspulagvghxx.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Access-Control-Allow-Headers:
+      - accept, authorization, origin
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - attachment; filename="jcopmmuubebhyotlbspulagvghxx.json"
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 25 Mar 2014 12:45:33 GMT
+      Location:
+      - https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?response-content-type=application/json&AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Signature=Hap2RH419SMXqmmHeIR3PeV3k/o%3D&Expires=1395752133
+      Server:
+      - nginx/1.5.7
+      Set-Cookie:
+      - _session_id=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJTkzNDJjNmVkZGNjNjdmMmVlZjMwNWQ2ODMyYWViNWE2BjsAVEkiD2NzcmYudG9rZW4GOwBUSSIxNHVCSEdyamF1d1MyTFRwTUlOeVhKVjNhK3IzdHJjTkVMeURoSU42TXd6dz0GOwBG--46d3cf866b6d4dbe4e85f1ac8df4037ec8728080;
+        path=/; HttpOnly
+      Status:
+      - 302 Found
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Request-Id:
+      - 87c3623c-561a-4159-bf33-97f103f663c0
+      X-Runtime:
+      - '0.019621'
+      Content-Length:
+      - '20'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:33 GMT
+- request:
+    method: get
+    uri: https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Expires=1395752133&Signature=Hap2RH419SMXqmmHeIR3PeV3k/o=&response-content-type=application/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - gXQZHfMt7DYJeWWB5cRzs8XCbloJIWZxavQiGw7Y5v6l5jooyJ3+r9OXWzVvXO0D
+      X-Amz-Request-Id:
+      - CAD55E34BCE2FE8F
+      Date:
+      - Tue, 25 Mar 2014 12:45:35 GMT
+      Last-Modified:
+      - Tue, 25 Mar 2014 12:44:49 GMT
+      Etag:
+      - '"2c13488cf7358501ef615456b5c85131"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '37'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"fields":["count"],"values":[["1"]]}'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:34 GMT
+- request:
+    method: get
+    uri: https://dataclips.heroku.com/jcopmmuubebhyotlbspulagvghxx.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Access-Control-Allow-Headers:
+      - accept, authorization, origin
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - attachment; filename="jcopmmuubebhyotlbspulagvghxx.json"
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 25 Mar 2014 12:45:35 GMT
+      Location:
+      - https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?response-content-type=application/json&AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Signature=9CYOBnYakSJVZM69XaYYs5q1E7g%3D&Expires=1395752135
+      Server:
+      - nginx/1.5.7
+      Set-Cookie:
+      - _session_id=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJThiODJlMjhmODQ1NWYzOWUwNTc0YjBhZTIyMmVhYjliBjsAVEkiD2NzcmYudG9rZW4GOwBUSSIxMzFPTDZGTWc0UWt6MVQ2cU1jWWNneGR2TEdTVTltUUdUUDRIdEpvL0JtRT0GOwBG--f4b3cb06e97887263e7c8b32f3b56861f47cb497;
+        path=/; HttpOnly
+      Status:
+      - 302 Found
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Request-Id:
+      - bde84a6e-dca0-4578-b82e-84b2aebbd9bf
+      X-Runtime:
+      - '0.022720'
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:35 GMT
+- request:
+    method: get
+    uri: https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Expires=1395752135&Signature=9CYOBnYakSJVZM69XaYYs5q1E7g=&response-content-type=application/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - lluRi49BteQ+iGIQLE2bf2QlcUbHkhs/Q/SzngSKVG7qco/mFL/PXxj8fzTGd7PJ
+      X-Amz-Request-Id:
+      - 2F1C3A94879AF7BD
+      Date:
+      - Tue, 25 Mar 2014 12:45:36 GMT
+      Last-Modified:
+      - Tue, 25 Mar 2014 12:44:49 GMT
+      Etag:
+      - '"2c13488cf7358501ef615456b5c85131"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '37'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"fields":["count"],"values":[["1"]]}'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:35 GMT
+- request:
+    method: get
+    uri: https://dataclips.heroku.com/jcopmmuubebhyotlbspulagvghxx.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Access-Control-Allow-Headers:
+      - accept, authorization, origin
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - attachment; filename="jcopmmuubebhyotlbspulagvghxx.json"
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 25 Mar 2014 12:45:36 GMT
+      Location:
+      - https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?response-content-type=application/json&AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Signature=18BzqMo09X6yXt72zk9R33xDleI%3D&Expires=1395752136
+      Server:
+      - nginx/1.5.7
+      Set-Cookie:
+      - _session_id=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJWI2YThlOGNmYTkxZDliNjAyYzY5NzU2ZjEyYTE1NTM2BjsAVEkiD2NzcmYudG9rZW4GOwBUSSIxaW1ZZERGUEZ2eHhoN2Q0ZnRQRXFoc09nQThkK2haR0E3azhoeWl0RSt4MD0GOwBG--62aa82a84b2ca699fb8dd00729ffd66d0daac66f;
+        path=/; HttpOnly
+      Status:
+      - 302 Found
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Request-Id:
+      - c9961ad1-91e5-489d-84c6-e0907d5c683a
+      X-Runtime:
+      - '0.023851'
+      Content-Length:
+      - '20'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:36 GMT
+- request:
+    method: get
+    uri: https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Expires=1395752136&Signature=18BzqMo09X6yXt72zk9R33xDleI=&response-content-type=application/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - C0U0BxfBGmRSb+mA9tNrVF9hblEaXootSAwgT/5CvgzKEivYdKlgoeGdJOdDqWVY
+      X-Amz-Request-Id:
+      - 4AFB864DE8373DA1
+      Date:
+      - Tue, 25 Mar 2014 12:45:37 GMT
+      Last-Modified:
+      - Tue, 25 Mar 2014 12:44:49 GMT
+      Etag:
+      - '"2c13488cf7358501ef615456b5c85131"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '37'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"fields":["count"],"values":[["1"]]}'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:36 GMT
+- request:
+    method: get
+    uri: https://dataclips.heroku.com/jcopmmuubebhyotlbspulagvghxx.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Access-Control-Allow-Headers:
+      - accept, authorization, origin
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - attachment; filename="jcopmmuubebhyotlbspulagvghxx.json"
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 25 Mar 2014 12:45:37 GMT
+      Location:
+      - https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?response-content-type=application/json&AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Signature=pWQkWqawFxieJEo0hWjK3bEzD/g%3D&Expires=1395752137
+      Server:
+      - nginx/1.5.7
+      Set-Cookie:
+      - _session_id=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJTIwMWY0YjUwMjY0YTZhNzJlODQzMGM1YzhmZTFjYmEzBjsAVEkiD2NzcmYudG9rZW4GOwBUSSIxODFuUldrL1JnSnBPc2lqWHlheitCdVlyUjBvc3pzNk1jcWZicVdKRVVvdz0GOwBG--994dd7c87d9a4392062428973d2766391899ba0b;
+        path=/; HttpOnly
+      Status:
+      - 302 Found
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Request-Id:
+      - 30a931c7-7575-4ab3-bd4e-0487f05b1d12
+      X-Runtime:
+      - '0.017302'
+      Content-Length:
+      - '20'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:37 GMT
+- request:
+    method: get
+    uri: https://dataclips.s3.amazonaws.com/ndwxlgniznuffznjhyykumrfaprp.json?AWSAccessKeyId=AKIAJNTVUFFR73H3LQIA&Expires=1395752137&Signature=pWQkWqawFxieJEo0hWjK3bEzD/g=&response-content-type=application/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - s8uSS9Zbl/PWQjnROj8NhcmwGIIA2ZoIgYIUUcx14RzXwHvamOn1U5p7gbI8jPW2
+      X-Amz-Request-Id:
+      - 9B1E710B548320D1
+      Date:
+      - Tue, 25 Mar 2014 12:45:38 GMT
+      Last-Modified:
+      - Tue, 25 Mar 2014 12:44:49 GMT
+      Etag:
+      - '"2c13488cf7358501ef615456b5c85131"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '37'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"fields":["count"],"values":[["1"]]}'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 12:45:37 GMT
+recorded_with: VCR 2.5.0

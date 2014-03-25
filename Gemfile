@@ -8,3 +8,8 @@ gem "librato-metrics"
 group :development do
   gem "debugger"
 end
+
+group :test do
+  gem "vcr"
+  gem "webmock"
+end
