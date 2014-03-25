@@ -6,6 +6,7 @@ module D2L
       end
 
       def call(dataclip, options = {})
+        Scrolls.log(function: :base)
         @dataclip = dataclip
         @options = options
         gauges = dataclip.values.each_with_object({}) do |value, metrics|
