@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS measurements (
   dataclip_reference TEXT NOT NULL,
   librato_base_name TEXT NOT NULL,
   run_at TIMESTAMPTZ,
-  run_every_seconds INTEGER
+  run_interval INTEGER
 );
 
-CREATE INDEX measurements_run_at_run_every_seconds ON measurements(run_at, run_every_seconds);
+CREATE INDEX measurements_run_at_run_interval ON measurements(run_at, run_interval);
+CREATE UNIQUE INDEX measurements_unique_dataclip_reference ON measurements(dataclip_reference);

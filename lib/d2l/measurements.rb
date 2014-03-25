@@ -3,7 +3,7 @@ module D2L
     def outdated
       return enum_for(:outdated) unless block_given?
 
-      DB[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_every_seconds))").each do |row|
+      DB[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_interval))").each do |row|
         yield Measurement.new(row[:id], row[:dataclip_reference], row[:librato_base_name])
       end
     end

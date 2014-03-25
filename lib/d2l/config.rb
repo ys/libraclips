@@ -18,5 +18,8 @@ module D2L
       ENV['LIBRATO_TOKEN']
     end
 
+    def default_run_interval
+      Integer(ENV['DEFAULT_RUN_INTERVAL'] || 60)
+    end
   end
 end
