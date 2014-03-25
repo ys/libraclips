@@ -7,31 +7,26 @@ module TransformFunctions
     def call(dataclip, options = {})
       @dataclip = dataclip
       @options = options
-      dataclip.values.each_with_index.map do |value, i|
-        metric_name = build_name(value, i)
+      dataclip.values.each_with_object({}) do |value, metrics|
+        metric_name = build_name(value)
         metric_value = Float(value.count)
-        { name: metric_name,
-          value: metric_value
-        }
+        metrics[metric_name] = { value: metric_value }
       end
     end
 
     private
     attr_reader :dataclip, :options
 
-    def build_name(value, index, metric_type = 'count')
+    def build_name(value, metric_type = 'count')
       base_name = if librato_base_name
                     "#{librato_base_name}."
                   else
                     ""
                   end
-      case
-      when dataclip.has_field?(/name/)
-        "#{base_name}.#{value.send(dataclip.matching_fields(/name/).first)}.#{metric_type}"
-      when dataclip.values.size == 1
-        "#{base_name}.#{metric_type}"
+      if dataclip.has_field?(/name/)
+        "#{base_name}#{value.send(dataclip.matching_fields(/name/).first)}.#{metric_type}"
       else
-        "#{base_name}.#{index}.#{metric_type}"
+        "#{base_name}#{metric_type}"
       end
     end
 
