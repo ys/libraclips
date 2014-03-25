@@ -1,5 +1,4 @@
-require_relative 'transformer'
-require_relative 'librato'
+require_relative 'migrator'
 
 module D2L
   class Poller
@@ -11,19 +10,9 @@ module D2L
 
     def run
       loop do
-        DB[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_every_seconds))").each do |row|
-          self.call(row[:dataclip_reference], row[:librato_base_name])
-          DB[:measurements].where(id: row[:id]).update(run_at: Time.now())
-        end
+        Migrator.new.migrate_outdated_measurements
         sleep poll_interval
       end
     end
-
-    def call(dataclip_ref, librato_base_name)
-      transformer = Transformer.new(dataclip_ref, librato_base_name)
-      metrics = transformer.call
-      Librato::Client.new.submit(metrics)
-    end
-
   end
 end
