@@ -4,7 +4,6 @@ ruby "2.1.1"
 
 gem "dotenv"
 gem "rake"
-gem "librato-metrics"
 gem "scrolls"
 gem "faraday"
 gem "pg"
