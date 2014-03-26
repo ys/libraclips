@@ -11,12 +11,12 @@ module D2L
         return function if function.accepts?(dataclip)
       end
       # Default return function
-      TransformFunctions::Base.new
+      TransformFunctions::Default.new
     end
 
     def self.available_functions
       TransformFunctions.constants.select do |c|
-        Class === TransformFunctions.const_get(c) && c != :Base
+        Class === TransformFunctions.const_get(c) && c != :Default
       end
     end
   end

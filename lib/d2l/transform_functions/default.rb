@@ -2,7 +2,7 @@ require_relative '../config'
 
 module D2L
   module TransformFunctions
-    class Base
+    class Default
       def accepts?(dataclip)
         dataclip.has_field?('count') ||
         dataclip.has_field?(/perc/)
