@@ -9,6 +9,11 @@ gem "faraday"
 gem "pg"
 gem "sequel"
 
+group :web do
+  gem "unicorn"
+  gem "sinatra", require: "sinatra/base"
+end
+
 group :development do
   gem "debugger"
   gem "pry"
