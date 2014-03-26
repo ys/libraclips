@@ -8,7 +8,7 @@ module D2L
         dataclip.has_field?(/perc/)
       end
 
-      def call(dataclip, args)
+      def call(dataclip, args = {})
         Scrolls.log(step: :transform_dataclip, function: :base)
         @dataclip = dataclip
         @librato_base_name = args[:librato_base_name] || Config.default_librato_base_name
