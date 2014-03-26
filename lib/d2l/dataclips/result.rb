@@ -12,7 +12,7 @@ module D2L
         json_response['values'].map do |json_value|
           if json_value.size != struct_fields.size
             message = "value '#{json_value}' has not the right fields #{struct_fields}"
-            raise(StandardError, message)
+            raise(Error, message)
           end
           struct.new(*json_value)
         end
@@ -21,12 +21,12 @@ module D2L
       def self.check_response_validity!(json_response)
         check_field_is_array!(json_response['fields'], 'fields')
         check_field_is_array!(json_response['values'], 'values')
-        raise(StandardError, "'fields' is empty") if json_response['fields'].size == 0
+        raise(Error, "'fields' is empty") if json_response['fields'].size == 0
       end
 
       def self.check_field_is_array!(field, name)
-        raise(StandardError, "'#{name}' is missing") unless field
-        raise(StandardError, "'#{name}' is not an array") unless field.is_a? Array
+        raise(Error, "'#{name}' is missing") unless field
+        raise(Error, "'#{name}' is not an array") unless field.is_a? Array
       end
 
       def empty?
@@ -45,5 +45,7 @@ module D2L
         end
       end
     end
+
+    class Error < StandardError; end
   end
 end
