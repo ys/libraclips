@@ -7,7 +7,7 @@ module D2L
 
       def submit(metrics = { gauges: [] })
         response = client.post do |req|
-          req.url librato_metrics_path
+          req.url Librato.metrics_path
           req.headers['Content-Type'] = 'application/json'
           req.body =  metrics.to_json
         end
@@ -17,8 +17,8 @@ module D2L
       end
 
       def client
-        conn = Faraday.new(:url => librato_url).tap do |conn|
-          conn.basic_auth(Config.librato_email, Config.librato_token)
+        @client ||= Faraday.new(:url => Librato.url).tap do |conn|
+          conn.basic_auth(Librato.email, Librato.token)
         end
       end
 
