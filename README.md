@@ -4,7 +4,7 @@
 
 ![](https://dl.dropboxusercontent.com/s/19mxjz04a96z4tw/libraclips.png?token_hash=AAFGAxyAaL9DKbnVFWTNwO4fKhqpZsb7E6uVK8okPqlPQg)
 
-This project aims to allow you to follow dataclips to be tracked on Librato.  
+This project aims to allow you to follow dataclips to be tracked on Librato.
 You can specify the base librato namespace of the metric and also the interval in which it has to be measured.
 
 ## Setup
@@ -17,7 +17,7 @@ $ $EDITOR .env  # set your env variables
 $ psql -d d2l # or heroku pg:psql
 psql > \i db/schema.rb
 psql > \q
-$ foreman start
+$ foreman start -p 3000
 ```
 
 ### Differents ENV variables
@@ -45,14 +45,19 @@ module D2L
       def accepts?(dataclip)
         true
       end
-      
+
       def call(dataclip, options= {})
-        # do amazing stuff with the dataclip      
+        # do amazing stuff with the dataclip
       end
     end
   end
 end
 ```
+
+
+## Web Interface
+
+You can browse [localhost:3000](http://localhost:3000) to have a small API over this.
 
 ## TODO
 
