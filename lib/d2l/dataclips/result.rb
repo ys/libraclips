@@ -34,7 +34,7 @@ module D2L
       end
 
       def matching_fields(regexp)
-        fields.select { |f| f =~ name }
+        fields.select { |f| f =~ regexp }
       end
 
       def has_field?(name)
