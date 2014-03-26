@@ -80,10 +80,8 @@ Default username and password : 'changeme'
 
 ## TODO
 
-* Write tests
+* Write tests, *this is always a todo*
 * Analyse needs to write new and accurate transform functions.
-* Add Logging and better error handling
-* Add Dependency Injection to be able to be compliant with other services than Librato
 * Rename project to libraclips
 
 
