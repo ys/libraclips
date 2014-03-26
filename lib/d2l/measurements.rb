@@ -37,9 +37,9 @@ module D2L
 
     private
 
-    def outdated_condition.freeze
+    def outdated_condition
       # Non run measurement or last run is over interval in seconds
-      "run_at IS null OR (run_at < now() - (interval '1 seconds' * run_interval))"
+      "run_at IS null OR (run_at < now() - (interval '1 seconds' * run_interval))".freeze
     end
   end
 end
