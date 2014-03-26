@@ -25,7 +25,13 @@ module D2L
     end
   end
 
-  class Measurement < Struct.new(:id, :dataclip_reference, :librato_base_name)
+  class Measurement < Struct.new(:id, :dataclip_reference, :librato_base_name, :run_interval)
+    def to_json(*args)
+      { id: id,
+        dataclip_reference: dataclip_reference,
+        librato_base_name: librato_base_name,
+        run_interval: run_interval }.to_json
+    end
   end
 end
 
