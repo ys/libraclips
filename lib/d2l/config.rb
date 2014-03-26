@@ -11,15 +11,17 @@ module D2L
     end
 
     def librato_email
-      ENV['LIBRATO_EMAIL']
+      ENV['LIBRATO_EMAIL'] || raise(Config::Error, 'env key LIBRATO_EMAIL not set')
     end
 
     def librato_token
-      ENV['LIBRATO_TOKEN']
+      ENV['LIBRATO_TOKEN'] || raise(Config::Error, 'env key LIBRATO_TOKEN not set')
     end
 
     def default_run_interval
       Integer(ENV['DEFAULT_RUN_INTERVAL'] || 60)
     end
+
+    class Error < StandardError; end
   end
 end
