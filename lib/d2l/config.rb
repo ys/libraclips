@@ -26,6 +26,14 @@ module D2L
       ENV['DEFAULT_LIBRATO_BASE_NAME'] || 'default'
     end
 
+    def basic_auth_username
+      ENV['BASIC_AUTH_USERNAME'] || 'changeme'
+    end
+
+    def basic_auth_password
+      ENV['BASIC_AUTH_PASSWORD'] || 'changeme'
+    end
+
     class Error < StandardError; end
   end
 end
