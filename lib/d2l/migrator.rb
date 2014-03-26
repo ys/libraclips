@@ -8,15 +8,16 @@ module D2L
 
     def migrate_outdated_measurements
       measurements.outdated.each do |measurement|
-        migrate(measurement.dataclip_reference, measurement.librato_base_name)
-        measurements.just_run!(measurement.id)
+        migrate(measurement)
       end
     end
 
-    def migrate(dataclip_ref, librato_base_name)
-      metrics = transformer.call(dataclip_ref, librato_base_name)
+    def migrate(measurement)
+      metrics = transformer.call(measurement.dataclip_reference, measurement.librato_base_name)
       librato_client.submit(metrics)
+      measurements.just_run!(measurement.id)
     end
+
     def measurements
       @measurements ||= Measurements.new
     end
