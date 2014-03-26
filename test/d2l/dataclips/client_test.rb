@@ -10,7 +10,7 @@ class D2L::Dataclips::ClientTest < Minitest::Unit::TestCase
         'jcopmmuubebhyotlbspulagvghxx#users-1',
         'jcopmmuubebhyotlbspulagvghxx'
       ].each do |url_or_id|
-        refute_equal nil, D2L::Dataclips::Client.new.fetch(url_or_id)
+        refute_equal D2L::Dataclips::Client.new.fetch(url_or_id), nil
       end
     end
   end
@@ -18,9 +18,9 @@ class D2L::Dataclips::ClientTest < Minitest::Unit::TestCase
   def test_fetch_has_correct_values
     VCR.use_cassette('dataclips') do
       result = D2L::Dataclips::Client.new.fetch('jcopmmuubebhyotlbspulagvghxx')
-      assert_equal ['count'], result.fields
-      assert_equal 1, result.values.size
-      assert_equal '1', result.values.first.count
+      assert_equal result.fields, ['count']
+      assert_equal result.values.size, 1
+      assert_equal result.values.first.count, '1'
     end
   end
 
@@ -30,7 +30,7 @@ class D2L::Dataclips::ClientTest < Minitest::Unit::TestCase
       raise OpenURI::HTTPError.new('not found', nil)
     end
     result = client.fetch('some_dataclip')
-    assert_equal [], result.fields
-    assert_equal [], result.values
+    assert_equal result.fields, []
+    assert_equal result.values, []
   end
 end

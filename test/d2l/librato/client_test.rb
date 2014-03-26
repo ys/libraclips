@@ -13,7 +13,7 @@ class D2L::Librato::ClientTest < Minitest::Unit::TestCase
   def test_correct_metrics_are_submitted
     VCR.use_cassette('librato_success') do
       response = D2L::Librato::Client.new.submit(correct_metrics)
-      assert_equal 200, response.status
+      assert_equal response.status, 200
     end
   end
 
@@ -22,7 +22,7 @@ class D2L::Librato::ClientTest < Minitest::Unit::TestCase
       err = assert_raises D2L::Librato::Error do
         response = D2L::Librato::Client.new.submit(incorrect_metrics)
       end
-      assert_equal 400, err.status
+      assert_equal err.status, 400
       assert_includes err.parsed_body, 'errors'
     end
   end
