@@ -22,11 +22,13 @@ module D2L
       DB[:measurements].where(id: id).update(run_at: Time.now())
     end
 
-    def create(dataclip_reference, librato_base_name, run_interval = Config.default_run_interval)
+    def create(dataclip_reference, librato_base_name, run_interval = nil)
       dataclip_id = D2L::Dataclips::IdExtractor.new(dataclip_reference).call
-      DB[:measurements].insert(dataclip_reference: dataclip_id,
+      run_interval ||= Config.default_run_interval
+      id = DB[:measurements].insert(dataclip_reference: dataclip_id,
                                 librato_base_name: librato_base_name,
                                 run_interval: run_interval)
+      Measurement.new(id, dataclip_id, librato_base_name, run_interval)
     end
 
     def has_dataclip?(dataclip_id)
