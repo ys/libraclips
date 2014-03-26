@@ -3,22 +3,24 @@ require_relative 'dataclips'
 require_relative 'transform_functions'
 module D2L
 class Transformer
-  def initialize(dataclip_ref, librato_base_name = nil)
+  attr_writer :dataclips_client
+
+  def call(dataclip_ref, librato_base_name = nil)
     @dataclip_ref = dataclip_ref
-    @librato_base_name = librato_base_name
+    return if dataclip.empty?
+    transform_function.call(dataclip, librato_base_name: librato_base_name)
   end
 
-  def call
-    return if dataclip.empty?
-    transform_function.call(dataclip, librato_base_name: @librato_base_name)
-  end
+  private
+
+  attr_reader :dataclip_ref
 
   def transform_function
     @transform_function ||= TransformFunctions.find_for(dataclip)
   end
 
   def dataclip
-    @dataclip ||= dataclips_client.fetch(@dataclip_ref)
+    @dataclip ||= dataclips_client.fetch(dataclip_ref)
   end
 
   def dataclips_client
