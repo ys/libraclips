@@ -22,6 +22,10 @@ module D2L
       Integer(ENV['DEFAULT_RUN_INTERVAL'] || 60)
     end
 
+    def default_librato_base_name
+      ENV['DEFAULT_LIBRATO_BASE_NAME'] || 'default'
+    end
+
     class Error < StandardError; end
   end
 end
