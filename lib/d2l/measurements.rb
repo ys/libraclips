@@ -1,9 +1,11 @@
+require_relative 'measurement'
+
 module D2L
   class Measurements
 
     def all
       DB[:measurements].all.map do |row|
-        Measurement.new(row[:id], row[:dataclip_reference], row[:librato_base_name])
+        Measurement.new(row)
       end
     end
 
@@ -11,10 +13,7 @@ module D2L
       return enum_for(:outdated) unless block_given?
 
       DB[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_interval))").each do |row|
-        yield Measurement.new(row[:id],
-                              row[:dataclip_reference],
-                              row[:librato_base_name],
-                              row[:run_interval])
+        yield Measurement.new(row)
       end
     end
 
@@ -36,14 +35,4 @@ module D2L
       DB[:measurements].where(dataclip_reference: dataclip_id).first
     end
   end
-
-  class Measurement < Struct.new(:id, :dataclip_reference, :librato_base_name, :run_interval)
-    def to_json(*args)
-      { id: id,
-        dataclip_reference: dataclip_reference,
-        librato_base_name: librato_base_name,
-        run_interval: run_interval }.to_json
-    end
-  end
 end
-
