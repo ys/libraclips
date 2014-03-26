@@ -22,6 +22,15 @@ namespace :d2l do
   end
 end
 
+task :console do
+  require 'pry'
+  require 'dotenv'
+  Dotenv.load
+  require_relative '../../d2l'
+  ARGV.clear
+  Pry.start
+end
+
 task :environment do
-  require_relative "../../d2l"
+  require_relative '../../d2l'
 end

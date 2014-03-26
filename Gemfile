@@ -11,6 +11,7 @@ gem "sequel"
 
 group :development do
   gem "debugger"
+  gem "pry"
   gem "foreman"
 end
 
