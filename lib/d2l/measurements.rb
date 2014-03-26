@@ -11,7 +11,10 @@ module D2L
       return enum_for(:outdated) unless block_given?
 
       DB[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_interval))").each do |row|
-        yield Measurement.new(row[:id], row[:dataclip_reference], row[:librato_base_name])
+        yield Measurement.new(row[:id],
+                              row[:dataclip_reference],
+                              row[:librato_base_name],
+                              row[:run_interval])
       end
     end
 
