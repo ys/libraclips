@@ -1,9 +1,10 @@
-require_relative '../config'
 require 'faraday'
+require 'json'
 
 module D2L
   module Librato
     class Client
+      attr_writer :client
 
       def submit(metrics = { gauges: [] })
         response = client.post do |req|
@@ -13,21 +14,29 @@ module D2L
         end
         if response.status > 399
           Scrolls.log(body:response.body, status: response.status)
+          raise Error.new(response.status, response.body)
         end
+        response
       end
+
+      private
 
       def client
         @client ||= Faraday.new(:url => Librato.url).tap do |conn|
           conn.basic_auth(Librato.email, Librato.token)
         end
       end
+    end
 
-      def librato_url
-        'https://metrics-api.librato.com'.freeze
+    class Error < StandardError
+      attr_reader :status, :body
+      def initialize(status, body = '')
+        @status = status
+        @body   = body
       end
 
-      def librato_metrics_path
-        '/v1/metrics'.freeze
+      def parsed_body
+        @parsed_body ||= JSON.parse(body)
       end
     end
   end
