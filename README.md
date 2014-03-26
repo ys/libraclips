@@ -43,10 +43,11 @@ module D2L
   module TransformFunctions
     class MyTransform
       def accepts?(dataclip)
+        # check if your function can handle the clip
         true
       end
 
-      def call(dataclip, options= {})
+      def call(dataclip, args= {})
         # do amazing stuff with the dataclip
       end
     end
@@ -58,6 +59,18 @@ end
 ## Web Interface
 
 You can browse [localhost:3000](http://localhost:3000) to have a small API over this.
+
+### Endpoints
+* GET `/measurements` : list measurements
+* POST `/measurements` : Create a new measurement by posting json. 
+
+  ```
+  {
+    dataclip_reference: 'url', 
+    librato_base_name: 'Base.key.for.librato', 
+    run_interval: 34
+  }
+  ```
 
 ## TODO
 
