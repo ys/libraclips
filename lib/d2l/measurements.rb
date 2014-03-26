@@ -12,7 +12,7 @@ module D2L
     def outdated
       return enum_for(:outdated) unless block_given?
 
-      DB[:measurements].where("run_at IS null OR (run_at < now() - (interval '1 seconds' * run_interval))").each do |row|
+      DB[:measurements].where(outdated_condition).each do |row|
         yield Measurement.new(row)
       end
     end
@@ -33,6 +33,13 @@ module D2L
     def has_dataclip?(dataclip_id)
       dataclip_id = D2L::Dataclips::IdExtractor.new(dataclip_reference).call
       DB[:measurements].where(dataclip_reference: dataclip_id).first
+    end
+
+    private
+
+    def outdated_condition.freeze
+      # Non run measurement or last run is over interval in seconds
+      "run_at IS null OR (run_at < now() - (interval '1 seconds' * run_interval))"
     end
   end
 end
