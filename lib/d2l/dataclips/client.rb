@@ -1,5 +1,6 @@
 require_relative 'result'
 require_relative 'id_extractor'
+require 'benchmark'
 require 'open-uri'
 require 'json'
 
@@ -10,9 +11,14 @@ module D2L
       # If an http error occurs, an empty object is returned
       # Accept dataclip url (with or without the .json) and also just the id.
       #
-      def fetch(url)
-        id = extract_dataclip_id(url)
-        response = get(id)
+      def fetch(url_or_id)
+        response = nil
+        execution_time = Benchmark.realtime do
+          id = extract_dataclip_id(url_or_id)
+          response = get(id)
+        end
+        Scrolls.log(step: :fetch_dataclip, url_or_id: url_or_id, duration: execution_time)
+        response
       rescue OpenURI::HTTPError
         Dataclips::Result.new([], [])
       end

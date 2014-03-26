@@ -7,12 +7,12 @@ module D2L
       end
 
       def call(dataclip, options = {})
-        Scrolls.log(function: :global_counters)
+        Scrolls.log(step: :transform_dataclip, function: :global_counters)
         @options = options
         value = dataclip.values.first
         metric_name = "#{librato_base_name}.count"
         metric_value = Float(value.count)
-        pp({ gauges: [{ name: metric_name, value: metric_value}] })
+        { gauges: [{ name: metric_name, value: metric_value}] }
       end
 
       private

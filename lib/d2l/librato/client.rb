@@ -1,5 +1,6 @@
 require 'faraday'
 require 'json'
+require 'benchmark'
 
 module D2L
   module Librato
@@ -7,15 +8,18 @@ module D2L
       attr_writer :client
 
       def submit(metrics = { gauges: [] })
-        response = client.post do |req|
-          req.url Librato.metrics_path
-          req.headers['Content-Type'] = 'application/json'
-          req.body =  metrics.to_json
+        response = nil
+        execution_time = Benchmark.realtime do
+          response = client.post do |req|
+            req.url Librato.metrics_path
+            req.headers['Content-Type'] = 'application/json'
+            req.body =  metrics.to_json
+          end
+          if response.status > 399
+            raise Error.new(response.status, response.body)
+          end
         end
-        if response.status > 399
-          Scrolls.log(body:response.body, status: response.status)
-          raise Error.new(response.status, response.body)
-        end
+        Scrolls.log(step: :push_metrics, duration: execution_time)
         response
       end
 
@@ -37,6 +41,10 @@ module D2L
 
       def parsed_body
         @parsed_body ||= JSON.parse(body)
+      end
+
+      def message
+        body
       end
     end
   end
