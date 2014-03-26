@@ -4,10 +4,9 @@ require_relative 'measurements'
 
 module D2L
   class Migrator
-    attr_writer :librato_client, :transformer
+    attr_writer :librato_client, :transformer, :measurements
 
     def migrate_outdated_measurements
-      measurements = Measurements.new
       measurements.outdated.each do |measurement|
         migrate(measurement.dataclip_reference, measurement.librato_base_name)
         measurements.just_run!(measurement.id)
@@ -17,6 +16,9 @@ module D2L
     def migrate(dataclip_ref, librato_base_name)
       metrics = transformer.call(dataclip_ref, librato_base_name)
       librato_client.submit(metrics)
+    end
+    def measurements
+      @measurements ||= Measurements.new
     end
 
     def librato_client
