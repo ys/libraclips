@@ -24,8 +24,13 @@ $ foreman start -p 3000
 
 * `LIBRATO_EMAIL`: Your librato email
 * `LIBRATO_TOKEN`: Your API librato token. Can be found at: [https://metrics.librato.com/account](https://metrics.librato.com/account) > Api Access Tokens.
+* `DEFAULT_LIBRATO_BASE_NAME`: Default prefix for all your metrics, if not specified per measurement.
 * `DATABASE_URL`: Auto provisioned on Heroku. Local default to `postgres://localhost:5432/dataclips2librato`
 * `POLL_INTERVAL`: Minimum Time Between two migrations of the measurements.
+* `DEFAULT_RUN_INTERVAL`: Default time before a measure is outdated.
+* `BASIC_AUTH_USERNAME`: Default username for web auth
+* `BASIC_AUTH_PASSWORD`: Default password for web auth
+
 
 ## How to extend the possible transformations
 
@@ -59,6 +64,7 @@ end
 ## Web Interface
 
 You can browse [localhost:3000](http://localhost:3000) to have a small API over this.
+Default username and password : 'changeme'
 
 ### Endpoints
 * GET `/measurements` : list measurements
