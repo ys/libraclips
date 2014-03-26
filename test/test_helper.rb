@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load('.env.example')
+
 require 'minitest/autorun'
 require 'debugger'
 require_relative '../lib/d2l'
