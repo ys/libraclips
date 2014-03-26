@@ -6,9 +6,9 @@ module D2L
         dataclip.has_field?('count') && dataclip.values.size == 1
       end
 
-      def call(dataclip, options = {})
+      def call(dataclip, args = {})
         Scrolls.log(step: :transform_dataclip, function: :global_counters)
-        @options = options
+        @args = args
         value = dataclip.values.first
         metric_name = "#{librato_base_name}.count"
         metric_value = Float(value.count)
@@ -16,10 +16,10 @@ module D2L
       end
 
       private
-      attr_reader :options
+      attr_reader :args
 
       def librato_base_name
-        options[:librato_base_name]
+        args[:librato_base_name]
       end
     end
   end
