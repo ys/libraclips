@@ -1,5 +1,12 @@
 module D2L
   class Measurements
+
+    def all
+      DB[:measurements].all.map do |row|
+        Measurement.new(row[:id], row[:dataclip_reference], row[:librato_base_name])
+      end
+    end
+
     def outdated
       return enum_for(:outdated) unless block_given?
 
