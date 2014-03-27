@@ -23,10 +23,10 @@ class D2L::MeasurementTest < Minitest::Unit::TestCase
     no_librato = valid_measurement
     no_librato.librato_base_name = nil
     refute no_librato.valid?
-    assert_includes no_dataclip.errors, :librato_base_name
+    assert_includes no_librato.errors, :librato_base_name
   end
 
-  def test_librato_base_name_presence
+  def test_run_interval_presence
     no_run_interval = valid_measurement
     no_run_interval.run_interval = nil
     # We set a default value in before_validation
