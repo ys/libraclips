@@ -9,7 +9,8 @@ require_relative 'routes'
 
 module D2L
   module Web
-    class App < Sinatra::Application
+    class App < Sinatra::Base
+
       configure :development, :test do
         require 'dotenv'
         Dotenv.load
