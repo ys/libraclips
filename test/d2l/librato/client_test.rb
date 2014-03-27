@@ -23,7 +23,7 @@ class D2L::Librato::ClientTest < Minitest::Unit::TestCase
         response = D2L::Librato::Client.new.submit(incorrect_metrics)
       end
       assert_equal err.status, 400
-      assert_includes err.parsed_body, 'errors'
+      assert_includes err.message, 'errors'
     end
   end
 end

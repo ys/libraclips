@@ -39,10 +39,6 @@ module D2L
         @body   = body
       end
 
-      def parsed_body
-        @parsed_body ||= JSON.parse(body)
-      end
-
       def message
         body
       end
