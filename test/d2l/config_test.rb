@@ -22,7 +22,8 @@ class D2L::ConfigTest < Minitest::Unit::TestCase
     poll_interval: 100,
     default_run_interval: 100,
     librato_email: 'email',
-    librato_token: 'token'
+    librato_token: 'token',
+    default_librato_base_name: 'base'
   }.each do |config_key, value|
     define_method("test_#{config_key}_env") do
       swap_env!(config_key, value)
@@ -34,9 +35,10 @@ class D2L::ConfigTest < Minitest::Unit::TestCase
   {
     database_url: 'postgres://localhost:5432/dataclips2librato',
     poll_interval: 10,
-    default_run_interval: 60
+    default_run_interval: 60,
+    default_librato_base_name: 'default'
   }.each do |config_key, default|
-    define_method("test_#{config_key}_url_default") do
+    define_method("test_#{config_key}_default") do
       remove_key!(config_key)
       assert_equal D2L::Config.send(config_key), default
       reset_env(config_key)
