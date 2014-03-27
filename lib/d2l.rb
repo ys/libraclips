@@ -1,4 +1,4 @@
-if ENV['RAKE_ENV'] != 'production'
+if ENV['RACK_ENV'] != 'production'
   require 'dotenv'
   Dotenv.load!
 end
