@@ -5,22 +5,22 @@ module D2L
 class Transformer
   attr_writer :dataclips_client, :transform_function
 
-  def call(dataclip_ref, librato_base_name = nil)
-    @dataclip_ref = dataclip_ref
-    return if dataclip.empty?
-    transform_function.call(dataclip, librato_base_name: librato_base_name)
+  def call(measurement)
+    @measurement = measurement
+    return if @measurement.nil? || dataclip.empty?
+    transform_function.call(dataclip, measurement)
   end
 
   private
 
-  attr_reader :dataclip_ref
+  attr_reader :measurement
 
   def transform_function
     @transform_function ||= TransformFunctions.find_for(dataclip)
   end
 
   def dataclip
-    @dataclip ||= dataclips_client.fetch(dataclip_ref)
+    @dataclip ||= dataclips_client.fetch(measurement.dataclip_reference)
   end
 
   def dataclips_client

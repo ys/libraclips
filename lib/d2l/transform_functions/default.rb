@@ -8,10 +8,10 @@ module D2L
         dataclip.has_field?(/perc/)
       end
 
-      def call(dataclip, args = {})
+      def call(dataclip, measurement)
         Scrolls.log(step: :transform_dataclip, function: :base)
         @dataclip = dataclip
-        @librato_base_name = args[:librato_base_name] || Config.default_librato_base_name
+        @librato_base_name = measurement.librato_base_name
         gauges = dataclip.values.each_with_object({}) do |value, metrics|
           if value.respond_to?(:count)
             metric_name = build_name(value)

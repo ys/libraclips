@@ -9,6 +9,10 @@ class D2L::TransformFunctions::DefaultTest < Minitest::Unit::TestCase
     D2L::Dataclips::Result.new(fields, values)
   end
 
+  def measurement
+    D2L::Measurement.new(librato_base_name: 'default')
+  end
+
   def valid_metrics
     metrics = {}
     (0..10).each do |i|
@@ -23,6 +27,6 @@ class D2L::TransformFunctions::DefaultTest < Minitest::Unit::TestCase
   end
 
   def test_valid_dataclip_is_correctly_transformed
-    assert_equal D2L::TransformFunctions::Default.new.call(valid_dataclip), valid_metrics
+    assert_equal D2L::TransformFunctions::Default.new.call(valid_dataclip, measurement), valid_metrics
   end
 end
