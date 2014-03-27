@@ -3,17 +3,15 @@ module D2L
     module Routes
       class Measurements < Sinatra::Application
         get '/measurements' do
-          measurements.all.to_json
+          json measurements: measurements.all
         end
 
         post '/measurements' do
           begin
             params = JSON.parse(request.body.read)
-            measurement = measurements.create(params['dataclip_reference'],
-                                              params['librato_base_name'],
-                                              params['run_interval'])
-            measurement.to_json
-          rescue StandardError => e
+            measurement = measurements.create(params)
+            json measurement: measurement
+          rescue Sequel::ValidationFailed => e
             halt 400, { error: e.message }.to_json
           end
         end
