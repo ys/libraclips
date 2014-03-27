@@ -15,6 +15,9 @@ module D2L
         Dotenv.load
       end
 
+      before do
+        content_type :json
+      end
 
       use Rack::Auth::Basic, "Restricted Area" do |username, password|
           username == D2L::Config.basic_auth_username and password == D2L::Config.basic_auth_password
