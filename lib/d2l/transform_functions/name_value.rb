@@ -1,3 +1,5 @@
+require_relative 'base'
+
 module D2L
   module TransformFunctions
     class NameValue < Base

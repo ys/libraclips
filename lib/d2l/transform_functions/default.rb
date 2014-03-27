@@ -1,4 +1,5 @@
 require_relative '../config'
+require_relative 'base'
 
 module D2L
   module TransformFunctions
