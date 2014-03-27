@@ -8,7 +8,7 @@ module D2L
       end
 
       def transform
-        Scrolls.log(step: :transform_dataclip, function: :global_counters)
+        Scrolls.log(step: :transform_dataclip, function: :name_value)
         metrics = dataclip.values.map do |value|
           metric_name = "#{measurement.librato_base_name}.#{value[dataclip.fields.first]}"
           metric_value = Float(value[dataclip.fields.last])
