@@ -22,11 +22,32 @@ class D2L::TransformFunctions::DefaultTest < Minitest::Unit::TestCase
     { gauges: metrics }
   end
 
+  def valid_dataclip_without_name
+    fields = ['ame','count', 'perc100']
+    values = (0..10).map do |i|
+      Struct.new(*fields.map(&:to_sym)).new("name#{i}", i * 10, i * 100)
+    end
+    D2L::Dataclips::Result.new(fields, values)
+  end
+
+  def valid_metrics_without_name
+    metrics = {}
+    (0..10).each do |i|
+        metrics["default.count"]   = { value: i * 10 }
+        metrics["default.perc100"] = { value: i * 100 }
+    end
+    { gauges: metrics }
+  end
+
   def test_valid_dataclip_is_accepted
     assert D2L::TransformFunctions::Default.new.accepts?(valid_dataclip)
   end
 
   def test_valid_dataclip_is_correctly_transformed
     assert_equal D2L::TransformFunctions::Default.new.call(valid_dataclip, measurement), valid_metrics
+  end
+
+  def test_valid_dataclip_is_correctly_transformed_when_no_name
+    assert_equal D2L::TransformFunctions::Default.new.call(valid_dataclip_without_name, measurement), valid_metrics_without_name
   end
 end
