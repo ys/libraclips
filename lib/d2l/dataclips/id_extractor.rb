@@ -6,7 +6,12 @@ module D2L
       end
 
       def call
-        @url_or_id.split("/").last.gsub(/\#.+/, '').gsub(/\.\w+/, '')
+        path = @url_or_id.split("/").last
+        if path
+          path.gsub(/\#.+/, '').gsub(/\.\w+/, '')
+        else
+          nil
+        end
       end
     end
   end
