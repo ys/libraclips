@@ -38,6 +38,10 @@ GEM
     safe_yaml (0.9.3)
     scrolls (0.3.3)
     sequel (4.8.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -75,6 +79,7 @@ DEPENDENCIES
   rake
   scrolls
   sequel
+  simplecov
   sinatra
   sinatra-contrib
   unicorn

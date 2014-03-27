@@ -25,4 +25,5 @@ group :test do
   gem "vcr"
   gem "webmock"
   gem "rack-test"
+  gem "simplecov", require: false
 end
