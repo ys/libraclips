@@ -3,7 +3,7 @@ require_relative 'dataclips'
 require_relative 'transform_functions'
 module D2L
 class Transformer
-  attr_writer :dataclips_client
+  attr_writer :dataclips_client, :transform_function
 
   def call(dataclip_ref, librato_base_name = nil)
     @dataclip_ref = dataclip_ref
