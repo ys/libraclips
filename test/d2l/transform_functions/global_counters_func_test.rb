@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class D2L::TransformFunctions::GlobalCountersTest < Minitest::Unit::TestCase
+class D2L::TransformFunctions::GlobalCountersFuncTest < Minitest::Unit::TestCase
   def valid_dataclip
     fields = ['some_value']
     values = [Struct.new(:some_value).new(10)]
@@ -16,10 +16,10 @@ class D2L::TransformFunctions::GlobalCountersTest < Minitest::Unit::TestCase
   end
 
   def test_valid_dataclip_is_accepted
-    assert D2L::TransformFunctions::GlobalCounters.new.accepts?(valid_dataclip)
+    assert D2L::TransformFunctions::GlobalCountersFunc.new.accepts?(valid_dataclip)
   end
 
   def test_valid_dataclip_is_correctly_transformed
-    assert_equal D2L::TransformFunctions::GlobalCounters.new.call(valid_dataclip, measurement), valid_metrics
+    assert_equal D2L::TransformFunctions::GlobalCountersFunc.new.call(valid_dataclip, measurement), valid_metrics
   end
 end

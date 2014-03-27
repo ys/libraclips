@@ -2,7 +2,7 @@ require_relative 'base'
 
 module D2L
   module TransformFunctions
-    class NameValue < Base
+    class NameValueFunc < Base
       def accepts?(dataclip)
         dataclip.fields.size == 2
       end

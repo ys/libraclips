@@ -2,7 +2,7 @@ require_relative 'base'
 
 module D2L
   module TransformFunctions
-    class GlobalCounters < Base
+    class GlobalCountersFunc < Base
       def accepts?(dataclip)
         dataclip.fields.size == 1 && dataclip.values.size == 1
       end

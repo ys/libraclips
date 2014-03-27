@@ -7,7 +7,7 @@ module D2L
     # Functions can be added inside transform_functions directory
     def self.find_for(dataclip)
       function = available_functions.each do |f|
-        function = TransformFunctions.const_get(f).new
+        function = self.const_get(f).new
         return function if function.accepts?(dataclip)
       end
       # Default return function
@@ -16,7 +16,7 @@ module D2L
 
     def self.available_functions
       TransformFunctions.constants.select do |c|
-        Class === TransformFunctions.const_get(c) && ![:Default, :Base].include?(c)
+        Class === TransformFunctions.const_get(c) && c =~ /Func$/
       end
     end
   end

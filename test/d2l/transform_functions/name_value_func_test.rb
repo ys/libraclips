@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class D2L::TransformFunctions::NameValueTest < Minitest::Unit::TestCase
+class D2L::TransformFunctions::NameValueFuncTest < Minitest::Unit::TestCase
   def valid_dataclip
     fields = ['something','some_value']
     values = (0..10).map do |i|
@@ -21,10 +21,10 @@ class D2L::TransformFunctions::NameValueTest < Minitest::Unit::TestCase
   end
 
   def test_valid_dataclip_is_accepted
-    assert D2L::TransformFunctions::NameValue.new.accepts?(valid_dataclip)
+    assert D2L::TransformFunctions::NameValueFunc.new.accepts?(valid_dataclip)
   end
 
   def test_valid_dataclip_is_correctly_transformed
-    assert_equal D2L::TransformFunctions::NameValue.new.call(valid_dataclip, measurement), valid_metrics
+    assert_equal D2L::TransformFunctions::NameValueFunc.new.call(valid_dataclip, measurement), valid_metrics
   end
 end

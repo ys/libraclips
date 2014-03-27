@@ -6,14 +6,14 @@ class D2L::TransformFunctionsTest < Minitest::Unit::TestCase
     fields = ['some_value']
     values = [Struct.new(:some_value).new(10)]
     dataclip = D2L::Dataclips::Result.new(fields, values)
-    assert_kind_of D2L::TransformFunctions::GlobalCounters, D2L::TransformFunctions.find_for(dataclip)
+    assert_kind_of D2L::TransformFunctions::GlobalCountersFunc, D2L::TransformFunctions.find_for(dataclip)
   end
 
   def test_find_name_value
     fields = ['some_value', 'another']
     values = [Struct.new(:some_value).new(10)]
     dataclip = D2L::Dataclips::Result.new(fields, values)
-    assert_kind_of D2L::TransformFunctions::NameValue, D2L::TransformFunctions.find_for(dataclip)
+    assert_kind_of D2L::TransformFunctions::NameValueFunc, D2L::TransformFunctions.find_for(dataclip)
   end
 
   def test_fall_to_default
