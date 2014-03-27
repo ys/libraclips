@@ -1,5 +1,5 @@
 require 'dotenv'
-Dotenv.load('.env.example')
+Dotenv.load('.env.test')
 
 require 'minitest/autorun'
 require 'debugger'
