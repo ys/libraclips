@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 ruby "2.1.1"
 
-gem "dotenv"
 gem "rake"
 gem "scrolls"
 gem "faraday"
@@ -15,6 +14,7 @@ group :web do
 end
 
 group :development do
+  gem "dotenv"
   gem "debugger"
   gem "pry"
   gem "foreman"
