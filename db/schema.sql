@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS measurements (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   dataclip_reference TEXT NOT NULL,
   librato_base_name TEXT NOT NULL,
+  librato_source TEXT,
   run_at TIMESTAMPTZ,
   run_interval INTEGER
 );
