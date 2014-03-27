@@ -1,6 +1,6 @@
 require_relative 'transformer'
 require_relative 'librato'
-require_relative 'measurements'
+require_relative 'measurement'
 
 module D2L
   class Migrator
@@ -21,7 +21,7 @@ module D2L
     end
 
     def measurements
-      @measurements ||= Measurements.new
+      @measurements ||= Measurement
     end
 
     def librato_client

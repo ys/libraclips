@@ -19,7 +19,7 @@ module D2L
         end
 
         def measurements
-          D2L::Measurements.new
+          D2L::Measurement
         end
       end
     end
