@@ -9,7 +9,7 @@ module D2L
         Scrolls.log(step: :transform_dataclip, function: :global_counters)
         value = dataclip.values.first
         metric_name = measurement.librato_base_name
-        metric_value = Float(value[column])
+        metric_value = Float(value[dataclip.fields.first])
         { gauges: [{ name: metric_name, value: metric_value}] }
       end
     end
