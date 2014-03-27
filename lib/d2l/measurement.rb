@@ -1,10 +1,6 @@
 module D2L
   class Measurement < Sequel::Model
-    def before_create
-      self.dataclip_reference = extract_id(self.dataclip_reference)
-      self.run_interval ||= Config.default_run_interval
-      super
-    end
+    plugin :validation_helpers
 
     def self.outdated
       return enum_for(:outdated) unless block_given?
@@ -16,6 +12,20 @@ module D2L
 
     def self.just_run!(id)
       Measurement[id].update(run_at: Time.now())
+    end
+
+    def before_validation
+      if self.dataclip_reference
+        self.dataclip_reference = extract_id(self.dataclip_reference)
+      end
+      self.run_interval ||= Config.default_run_interval
+      super
+    end
+
+    def validate
+      super
+      validates_presence [:dataclip_reference, :librato_base_name, :run_interval]
+      validates_unique [:dataclip_reference]
     end
 
     def has_dataclip?(dataclip_id)
