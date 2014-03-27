@@ -14,6 +14,10 @@ module D2L
       Measurement[id].update(run_at: Time.now())
     end
 
+    def self.has_dataclip?(dataclip_id)
+      where(dataclip_reference: extract_id(dataclip_id)).first
+    end
+
     def before_validation
       if self.dataclip_reference
         self.dataclip_reference = extract_id(self.dataclip_reference)
@@ -26,10 +30,6 @@ module D2L
       super
       validates_presence [:dataclip_reference, :librato_base_name, :run_interval]
       validates_unique [:dataclip_reference]
-    end
-
-    def has_dataclip?(dataclip_id)
-      where(dataclip_reference: extract_id(dataclip_id)).first
     end
 
     def to_json(*args)
