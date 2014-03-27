@@ -10,7 +10,8 @@ gem "sequel"
 
 group :web do
   gem "unicorn"
-  gem "sinatra", require: "sinatra/base"
+  gem "sinatra"
+  gem "sinatra-contrib"
 end
 
 group :development do
@@ -23,4 +24,5 @@ end
 group :test do
   gem "vcr"
   gem "webmock"
+  gem "rack-test"
 end
