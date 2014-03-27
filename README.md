@@ -38,7 +38,8 @@ Adding a new class under D2L::TransformFunctions.
 This class just needs to implements two methods
 
 * `#accepts?(dataclip)` This method permits to find a transform function for current dataclip
-* `#call(dataclip, options)` This is the actual transformation method. It should returns the metrics ready for Librato.
+* `#transform` This is the actual transformation method. It should returns the metrics ready for Librato.   
+Dataclip and measurement are injected and available via `D2L::TransformFunction::Base`
 
 #### Class skeleton
 
@@ -46,13 +47,13 @@ This class just needs to implements two methods
 ```
 module D2L
   module TransformFunctions
-    class MyTransform
+    class MyTransform < Base
       def accepts?(dataclip)
         # check if your function can handle the clip
         true
       end
 
-      def call(dataclip, args= {})
+      def transform
         # do amazing stuff with the dataclip
       end
     end
