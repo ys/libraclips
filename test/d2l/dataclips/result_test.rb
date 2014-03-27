@@ -41,5 +41,6 @@ class D2L::Dataclips::ResultTest < Minitest::Unit::TestCase
     assert_equal result.values.size, 2
     assert_respond_to result.values.first, :count
     assert_equal result.values.first.count, '1'
+    assert_equal result.values.first['count'], '1'
   end
 end

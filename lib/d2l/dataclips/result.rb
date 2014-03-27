@@ -8,7 +8,11 @@ module D2L
 
       def self.parse_values(json_response)
         struct_fields = json_response['fields'].map(&:to_sym)
-        struct = Struct.new(*struct_fields)
+        struct = Struct.new(*struct_fields) do
+          def [](field)
+            send(field)
+          end
+        end
         json_response['values'].map do |json_value|
           if json_value.size != struct_fields.size
             message = "value '#{json_value}' has not the right fields #{struct_fields}"
