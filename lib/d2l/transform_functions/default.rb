@@ -2,15 +2,14 @@ require_relative '../config'
 
 module D2L
   module TransformFunctions
-    class Default
+    class Default < Base
       def accepts?(dataclip)
         dataclip.has_field?('count') ||
         dataclip.has_field?(/perc/)
       end
 
-      def call(dataclip, measurement)
+      def transform
         Scrolls.log(step: :transform_dataclip, function: :base)
-        @dataclip = dataclip
         @librato_base_name = measurement.librato_base_name
         gauges = dataclip.values.each_with_object({}) do |value, metrics|
           if value.respond_to?(:count)
@@ -28,7 +27,7 @@ module D2L
       end
 
       private
-      attr_reader :dataclip, :librato_base_name
+      attr_reader :librato_base_name
 
       def build_name(value, metric_type = 'count')
         if dataclip.has_field?(/name/)

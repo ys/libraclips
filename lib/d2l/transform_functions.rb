@@ -16,7 +16,7 @@ module D2L
 
     def self.available_functions
       TransformFunctions.constants.select do |c|
-        Class === TransformFunctions.const_get(c) && c != :Default
+        Class === TransformFunctions.const_get(c) && ![:Default, :Base].include?(c)
       end
     end
   end

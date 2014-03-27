@@ -1,11 +1,11 @@
 module D2L
   module TransformFunctions
-    class NameValue
+    class NameValue < Base
       def accepts?(dataclip)
         dataclip.fields.size == 2
       end
 
-      def call(dataclip, measurement)
+      def transform
         Scrolls.log(step: :transform_dataclip, function: :global_counters)
         metrics = dataclip.values.map do |value|
           metric_name = "#{measurement.librato_base_name}.#{value[dataclip.fields.first]}"
