@@ -38,8 +38,12 @@ module D2L
 
     private
 
-    def extract_id(url_or_id)
+    def self.extract_id(url_or_id)
       D2L::Dataclips::IdExtractor.new(url_or_id).call
+    end
+
+    def extract_id(url_or_id)
+      self.class.extract_id(url_or_id)
     end
 
     def self.outdated_condition
