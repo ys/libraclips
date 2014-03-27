@@ -3,21 +3,19 @@ require 'bundler'
 
 Bundler.require
 
-require 'sinatra/base'
+require 'sinatra'
+require 'sinatra/json'
 require_relative '../../d2l'
 require_relative 'routes'
 
 module D2L
   module Web
     class App < Sinatra::Base
+      helpers Sinatra::JSON
 
       configure :development, :test do
         require 'dotenv'
         Dotenv.load
-      end
-
-      before do
-        content_type :json
       end
 
       use Rack::Auth::Basic, "Restricted Area" do |username, password|
