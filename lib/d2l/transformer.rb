@@ -9,14 +9,14 @@ class Transformer
     @measurement = measurement
     dataclip = fetch_dataclip
     return if @measurement.nil? || dataclip.empty?
-    transform_function.call(dataclip, measurement)
+    transform_function(dataclip).call(dataclip, measurement)
   end
 
   private
 
   attr_reader :measurement
 
-  def transform_function
+  def transform_function(dataclip)
     @transform_function || TransformFunctions.find_for(dataclip)
   end
 
