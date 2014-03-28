@@ -10,7 +10,7 @@ module D2L
 
       def submit(metrics = { gauges: [] })
         response = nil
-        D2L::Metrics.track_time(:librato) do
+        D2L::Metrics.track_time(:librato, metrics: metrics) do
           response = client.post do |req|
             req.url Librato.metrics_path
             req.headers['Content-Type'] = 'application/json'
