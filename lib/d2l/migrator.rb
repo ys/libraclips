@@ -14,7 +14,7 @@ module D2L
     end
 
     def migrate(measurement)
-      D2L::Metrics.track_time(:migration) do
+      D2L::Metrics.track_time(:migration, measurement_id: measurement.id) do
         metrics = transformer.call(measurement)
         librato_client.submit(metrics)
         measurements.just_run!(measurement.id)
