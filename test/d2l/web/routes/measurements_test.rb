@@ -25,8 +25,8 @@ class D2L::Web::Routes::MeasurementsTest < Minitest::Unit::TestCase
     DB.transaction(rollback: :always) do
       measurement = D2L::Measurement.create(dataclip_reference: 'ref', librato_base_name: 'default')
       get '/measurements'
-      assert_equal last_json['measurements'].size, 1
-      json_measurement = last_json['measurements'][0]
+      assert_equal last_json.size, 1
+      json_measurement = last_json[0]
       assert json_measurement.has_key? 'id'
       assert json_measurement.has_key? 'dataclip_reference'
       assert json_measurement.has_key? 'librato_base_name'
@@ -41,8 +41,18 @@ class D2L::Web::Routes::MeasurementsTest < Minitest::Unit::TestCase
       post '/measurements', measurement.to_json, "CONTENT_TYPE" => "application/json"
       assert_equal last_response.status, 200
       assert_equal D2L::Measurement.count, 1
-      assert_equal last_json['measurement']['dataclip_reference'], 'ref'
-      assert_equal last_json['measurement']['librato_base_name'], 'default'
+      assert_equal last_json['dataclip_reference'], 'ref'
+      assert_equal last_json['librato_base_name'], 'default'
+    end
+  end
+
+  def test_patch_measurements
+    DB.transaction(rollback: :always) do
+      measurement = D2L::Measurement.create(dataclip_reference: 'ref', librato_base_name: 'default')
+      patch "/measurements/#{measurement.id}", { run_interval: 10, dataclip_reference: 'WAT' }.to_json, "CONTENT_TYPE" => "application/json"
+      assert_equal last_response.status, 200
+      assert_equal last_json['dataclip_reference'], 'WAT'
+      assert_equal last_json['run_interval'], 10
     end
   end
 
@@ -55,4 +65,14 @@ class D2L::Web::Routes::MeasurementsTest < Minitest::Unit::TestCase
       assert_equal last_json['error'], 'dataclip_reference is not present'
     end
   end
+
+  def test_patch_invalid_measurements
+    DB.transaction(rollback: :always) do
+      measurement = D2L::Measurement.create(dataclip_reference: 'ref', librato_base_name: 'default')
+      patch "/measurements/#{measurement.id}", { run_interval: 10, dataclip_reference: '' }.to_json, "CONTENT_TYPE" => "application/json"
+      assert_equal last_response.status, 400
+      assert_equal last_json['error'], 'dataclip_reference is not present'
+    end
+  end
+
 end
