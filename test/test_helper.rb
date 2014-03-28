@@ -20,3 +20,11 @@ module Scrolls
 
   end
 end
+
+module D2L
+  module Metrics
+    def track_time(*args, &block)
+      block.call
+    end
+  end
+end
