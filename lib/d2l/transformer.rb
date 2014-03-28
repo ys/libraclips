@@ -7,6 +7,7 @@ class Transformer
 
   def call(measurement)
     @measurement = measurement
+    dataclip = fetch_dataclip
     return if @measurement.nil? || dataclip.empty?
     transform_function.call(dataclip, measurement)
   end
@@ -16,15 +17,15 @@ class Transformer
   attr_reader :measurement
 
   def transform_function
-    @transform_function ||= TransformFunctions.find_for(dataclip)
+    @transform_function || TransformFunctions.find_for(dataclip)
   end
 
-  def dataclip
-    @dataclip ||= dataclips_client.fetch(measurement.dataclip_reference)
+  def fetch_dataclip
+    dataclips_client.fetch(measurement.dataclip_reference)
   end
 
   def dataclips_client
-    @dataclips_client ||= Dataclips::Client.new
+    @dataclips_client || Dataclips::Client.new
   end
 end
 end
