@@ -5,7 +5,7 @@ module D2L
   module TransformFunctions
     class Default < Base
 
-      DEFAULT_FIELDS_REGEX = /perc|average|avg|median/.freeze
+      DEFAULT_FIELDS_REGEX = /perc|average|avg|median|min|max/.freeze
 
       def accepts?(dataclip)
         dataclip.has_field?('count') ||
