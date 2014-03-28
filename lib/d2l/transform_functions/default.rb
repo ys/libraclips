@@ -4,9 +4,12 @@ require_relative 'base'
 module D2L
   module TransformFunctions
     class Default < Base
+
+      DEFAULT_FIELDS_REGEX = /perc|average|avg|median/.freeze
+
       def accepts?(dataclip)
         dataclip.has_field?('count') ||
-        dataclip.has_field?(/perc/)
+        dataclip.has_field?(DEFAULT_FIELDS_REGEX)
       end
 
       def transform
@@ -18,7 +21,7 @@ module D2L
             metric_value = Float(value.count)
             metrics[metric_name] = { value: metric_value }
           end
-          dataclip.matching_fields(/perc/).each do |field|
+          dataclip.matching_fields(DEFAULT_FIELDS_REGEX).each do |field|
             metric_name = build_name(value, field)
             metric_value = Float(value.send(field))
             metrics[metric_name] = { value: metric_value }
