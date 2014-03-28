@@ -46,7 +46,7 @@ module D2L
                 "description" => "Get all measurements tracked actually.",
                 "href" => "/measurements",
                 "method" => "GET",
-                "rel" => "self",
+                "rel" => "list",
                 "title" => "Measurements"
               },
               {
@@ -74,7 +74,7 @@ module D2L
               },
               {
                 "description" => "Update measurement.",
-                "href" => "/measurements/{measurement_id}",
+                "href" => "/measurements/{id}",
                 "method" => "PATCH",
                 "rel" => "update",
                 "schema" => {
