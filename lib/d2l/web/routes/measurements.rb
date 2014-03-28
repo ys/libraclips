@@ -10,6 +10,7 @@ module D2L
           begin
             params = JSON.parse(request.body.read)
             measurement = measurements.create(params)
+            status 201
             json measurement
           rescue Sequel::ValidationFailed => e
             halt 400, { error: e.message }.to_json

@@ -39,7 +39,7 @@ class D2L::Web::Routes::MeasurementsTest < Minitest::Unit::TestCase
     DB.transaction(rollback: :always) do
       measurement = D2L::Measurement.new(dataclip_reference: 'ref', librato_base_name: 'default')
       post '/measurements', measurement.to_json, "CONTENT_TYPE" => "application/json"
-      assert_equal last_response.status, 200
+      assert_equal last_response.status, 201
       assert_equal D2L::Measurement.count, 1
       assert_equal last_json['dataclip_reference'], 'ref'
       assert_equal last_json['librato_base_name'], 'default'
