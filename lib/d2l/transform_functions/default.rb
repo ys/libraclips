@@ -10,7 +10,7 @@ module D2L
       end
 
       def transform
-        Scrolls.log(step: :transform_dataclip, function: :base)
+        Scrolls.log(step: :transform_dataclip, function: :default)
         @librato_base_name = measurement.librato_base_name
         gauges = dataclip.values.each_with_object({}) do |value, metrics|
           if value.respond_to?(:count)

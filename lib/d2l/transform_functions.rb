@@ -6,7 +6,7 @@ module D2L
     # Find the correct transform function.
     # Functions can be added inside transform_functions directory
     def self.find_for(dataclip)
-      function = available_functions.each do |f|
+      available_functions.each do |f|
         function = self.const_get(f).new
         return function if function.accepts?(dataclip)
       end
