@@ -3,11 +3,7 @@ module D2L
     plugin :validation_helpers
 
     def self.outdated
-      return enum_for(:outdated) unless block_given?
-
-      where(outdated_condition).each do |measurement|
-        yield measurement
-      end
+      where(outdated_condition)
     end
 
     def self.just_run!(id)
