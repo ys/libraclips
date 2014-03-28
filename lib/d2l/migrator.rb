@@ -1,3 +1,4 @@
+require_relative 'metrics'
 require_relative 'transformer'
 require_relative 'librato'
 require_relative 'measurement'
@@ -13,11 +14,13 @@ module D2L
     end
 
     def migrate(measurement)
-      Scrolls.log(step: :migrate_measurement, id: measurement.id)
-      metrics = transformer.call(measurement)
-      librato_client.submit(metrics)
-      measurements.just_run!(measurement.id)
-      Scrolls.log(step: :migrated_measurement, id: measurement.id)
+      D2L::Metrics.track_time(:migration) do
+        metrics = transformer.call(measurement)
+        librato_client.submit(metrics)
+        measurements.just_run!(measurement.id)
+      end
+    rescue StandardError => e
+      Scrolls.log(error: e.class, message: e.message, measurement: measurement.id)
     end
 
     def measurements

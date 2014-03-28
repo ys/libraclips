@@ -1,5 +1,6 @@
 require_relative 'result'
 require_relative 'id_extractor'
+require_relative '../metrics'
 require 'benchmark'
 require 'open-uri'
 require 'json'
@@ -13,11 +14,10 @@ module D2L
       #
       def fetch(url_or_id)
         response = nil
-        execution_time = Benchmark.realtime do
+        D2L::Metrics.track_time(:dataclips) do
           id = extract_dataclip_id(url_or_id)
           response = get(id)
         end
-        Scrolls.log(step: :fetch_dataclip, url_or_id: url_or_id, duration: execution_time)
         response
       rescue OpenURI::HTTPError
         Dataclips::Result.new([], [])

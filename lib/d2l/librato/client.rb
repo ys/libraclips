@@ -1,6 +1,7 @@
 require 'faraday'
 require 'json'
 require 'benchmark'
+require_relative '../metrics'
 
 module D2L
   module Librato
@@ -9,7 +10,7 @@ module D2L
 
       def submit(metrics = { gauges: [] })
         response = nil
-        execution_time = Benchmark.realtime do
+        D2L::Metrics.track_time(:librato) do
           response = client.post do |req|
             req.url Librato.metrics_path
             req.headers['Content-Type'] = 'application/json'
@@ -19,7 +20,6 @@ module D2L
             raise Error.new(response.status, response.body)
           end
         end
-        Scrolls.log(step: :push_metrics, duration: execution_time)
         response
       end
 
