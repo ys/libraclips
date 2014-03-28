@@ -4,7 +4,7 @@ if ENV['RACK_ENV'] != 'production'
 end
 require 'sequel'
 require_relative 'd2l/config'
-require_relative 'd2l/database'
+require_relative 'd2l/boot'
 require_relative 'd2l/dataclips'
 require_relative 'd2l/librato'
 require_relative 'd2l/migrator'
