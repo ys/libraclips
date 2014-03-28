@@ -7,6 +7,7 @@ gem "scrolls"
 gem "faraday"
 gem "pg"
 gem "sequel"
+gem "activesupport"
 
 group :web do
   gem "unicorn"
