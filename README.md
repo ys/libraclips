@@ -37,13 +37,37 @@ $ foreman start -p 3000
 
 ![](https://dl.dropboxusercontent.com/s/3gik7c7i6u4cpre/Screenshot%202014-05-09%2018.32.57.png?token_hash=AAGZzwi2Yeo3jjAKUySyHpgHQVlDr_l7_EL32YJuGHCDRw&expiry=1399656842)
 
+#### Metrics created
+
+One named by the metric name. Here:
+- random
+
 ### Column with name + value
 
 ![](https://dl.dropboxusercontent.com/s/iuzhm4kgc4e8jl4/Screenshot%202014-05-09%2018.33.20.png?token_hash=AAGt4eTNBY_B1YMkkndPQQaWZ2F4D2UANcZ2G4Jlbmp8tw&expiry=1399656891)
 
+#### Metrics created
+
+One for each line. Here: 
+- os.Linux
+- os.Windows
+- os.OSX
+
 ### Matching based on column name (Here we export each column to a separate metric)
 
 ![](https://dl.dropboxusercontent.com/s/xdjoniuf9xvvh0m/Screenshot%202014-05-09%2018.33.33.png?token_hash=AAEdX0MqdgDxsfTHh3Ni0dg8nzN_vu9vcbty407Ywo8SIg&expiry=1399656939)
+
+#### Metrics created
+
+One of each per line. Named `<metric_name>.<line_title>.<metric_type>`
+- count
+- average
+- min
+- max
+- median
+- perc90
+- perc95
+- perc99
 
 ## How to extend the possible transformations
 
