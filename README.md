@@ -7,6 +7,8 @@
 This project aims to allow you to follow dataclips to be tracked on Librato.
 You can specify the base librato namespace of the metric and also the interval in which it has to be measured.
 
+
+**DISCLAIMER** If you are not lucky enough to have your database hosted at Heroku, Please take a look to [@mmcgrana](https://github.com/mmcgrana) Go implementation to attack directly the database and export to librato : [mmcgrana/pg2librato](https://github.com/mmcgrana/pg2librato)
 ## Setup
 
 
