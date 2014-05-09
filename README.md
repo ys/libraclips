@@ -83,7 +83,7 @@ Default username and password : 'changeme'
 
 * Write tests, *this is always a todo*
 * Analyse needs to write new and accurate transform functions.
-* Rename project to libraclips
+* ~~Rename project to libraclips~~
 
 
 
